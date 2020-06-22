@@ -1,4 +1,4 @@
-package com.udacity.gradle.builditbigger.paid;
+package com.udacity.gradle.builditbigger;
 
 import android.os.Bundle;
 
@@ -8,8 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.udacity.gradle.builditbigger.R;
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,9 +15,7 @@ import com.udacity.gradle.builditbigger.R;
 public class MainActivityFragment extends Fragment {
 
     public MainActivityFragment() {
-        // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

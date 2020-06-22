@@ -30,25 +30,40 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    flavorDimensions 'paid_users', 'free_users'
-    productFlavors {
-        paid {
-            dimension = 'paid_users'
-            applicationId = 'com.udacity.gradle.builditbigger.paid'
-        }
+
+    sourceSets {
         free {
-            dimension = 'free_users'
-            applicationId = 'com.udacity.gradle.builditbigger.free'
+            java.srcDirs = ['src/free/java']
+        }
+        paid {
+            java.srcDirs = ['src/paid/java']
         }
     }
+
+    flavorDimensions 'users'
+    productFlavors {
+        free {
+            dimension = 'users'
+            applicationId = 'com.udacity.gradle.builditbigger.free'
+        }
+        paid {
+            dimension = 'users'
+            applicationId = 'com.udacity.gradle.builditbigger.paid'
+        }
+    }
+}
+
+configurations {
+    freeImplementation
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     endpointsServer project(path: ':backend', configuration: 'endpoints')
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.google.android.gms:play-services-ads:19.1.0'
+    freeImplementation 'com.google.android.gms:play-services-ads:19.1.0'
     implementation 'com.google.api-client:google-api-client:1.23.0'
     implementation 'com.google.http-client:google-http-client-android:1.23.0'
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
