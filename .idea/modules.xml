@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/FinalProject.iml" filepath="$PROJECT_DIR$/FinalProject.iml" group="FinalProject" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="FinalProject/app" />
       <module fileurl="file://$PROJECT_DIR$/backend/backend.iml" filepath="$PROJECT_DIR$/backend/backend.iml" group="FinalProject/backend" />
+      <module fileurl="file://$PROJECT_DIR$/displayjokes/displayjokes.iml" filepath="$PROJECT_DIR$/displayjokes/displayjokes.iml" group="FinalProject/displayjokes" />
     </modules>
   </component>
 </project>
