@@ -203,6 +203,7 @@
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-ads-base:19.1.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.constraintlayout:constraintlayout:1.1.3@aar" level="project" />
     <orderEntry type="module" module-name="displayjokes" />
+    <orderEntry type="module" module-name="jokeslibrary" />
     <orderEntry type="library" name="Gradle: android-android-29" level="project" />
   </component>
 </module>

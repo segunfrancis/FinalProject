@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/backend" />
             <option value="$PROJECT_DIR$/displayjokes" />
+            <option value="$PROJECT_DIR$/jokeslibrary" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

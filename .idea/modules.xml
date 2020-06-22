@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="FinalProject/app" />
       <module fileurl="file://$PROJECT_DIR$/backend/backend.iml" filepath="$PROJECT_DIR$/backend/backend.iml" group="FinalProject/backend" />
       <module fileurl="file://$PROJECT_DIR$/displayjokes/displayjokes.iml" filepath="$PROJECT_DIR$/displayjokes/displayjokes.iml" group="FinalProject/displayjokes" />
+      <module fileurl="file://$PROJECT_DIR$/jokeslibrary/jokeslibrary.iml" filepath="$PROJECT_DIR$/jokeslibrary/jokeslibrary.iml" group="FinalProject/jokeslibrary" />
     </modules>
   </component>
 </project>
