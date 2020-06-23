@@ -1,14 +1,11 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
 import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
-import com.project.segunfrancis.displayjokes.JokesActivity;
 import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
 
 import java.io.IOException;
@@ -16,12 +13,17 @@ import java.io.IOException;
 /**
  * Created by SegunFrancis
  */
-public class EndPointsAsync extends AsyncTask<Context, Void, String> {
+public class EndPointsAsync extends AsyncTask<Void, Void, String> {
     private static MyApi myApi = null;
-    private Context context;
+    private OnEventListener<String> mCallBack;
+    private Exception mException;
+
+    EndPointsAsync(OnEventListener<String> callBack) {
+        mCallBack = callBack;
+    }
 
     @Override
-    protected String doInBackground(Context... contexts) {
+    protected String doInBackground(Void... voids) {
         if (myApi == null) {
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
@@ -34,18 +36,22 @@ public class EndPointsAsync extends AsyncTask<Context, Void, String> {
                     });
             myApi = builder.build();
         }
-        context = contexts[0];
         try {
             return myApi.getJokeService().execute().getData();
         } catch (IOException e) {
-            return e.getMessage();
+            mException = e;
+            return null;
         }
     }
 
     @Override
     protected void onPostExecute(String result) {
-        final Intent intent = new Intent(context, JokesActivity.class);
-        intent.putExtra("main_joke_intent", result);
-        context.startActivity(intent);
+        if (mCallBack != null) {
+            if (mException == null) {
+                mCallBack.onSuccess(result);
+            } else {
+                mCallBack.onFailure(mException);
+            }
+        }
     }
 }

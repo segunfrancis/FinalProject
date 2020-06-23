@@ -1,10 +1,15 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.project.segunfrancis.displayjokes.JokesActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -38,6 +43,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        new EndPointsAsync().execute(this);
+        EndPointsAsync endPointsAsyncTask = new EndPointsAsync(new OnEventListener<String>() {
+            @Override
+            public void onSuccess(String object) {
+                final Intent intent = new Intent(MainActivity.this, JokesActivity.class);
+                intent.putExtra("main_joke_intent", object);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                Log.e("MainActivity", e.getLocalizedMessage(), e);
+            }
+        });
+        endPointsAsyncTask.execute();
     }
 }
