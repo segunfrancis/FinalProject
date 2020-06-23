@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.project.segunfrancis.displayjokes.JokesActivity;
 
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Exception e) {
                 Log.e("MainActivity", e.getLocalizedMessage(), e);
+                Toast.makeText(MainActivity.this, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
             }
         });
         endPointsAsyncTask.execute();

@@ -42,9 +42,20 @@ public class EndPointsAsyncTest {
     @Test
     public void testEndpointTask() throws ExecutionException, InterruptedException {
         onView(withId(R.id.joke_button)).perform(click());
-        String result = new EndPointsAsync().execute(rule.getActivity()).get();
-        assertNotNull(result);
-        assertNotEquals(result, "error");
-        assertTrue(result.length() > 0);
+        final String[] result = {null};
+        new EndPointsAsync(new OnEventListener<String>() {
+            @Override
+            public void onSuccess(String object) {
+                result[0] = object;
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                result[0] = null;
+            }
+        }).execute().get();
+        assertNotNull(result[0]);
+        assertNotEquals(result[0], "error");
+        assertTrue(result[0].length() > 0);
     }
 }
